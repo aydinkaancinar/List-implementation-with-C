@@ -73,6 +73,10 @@ int pop(List *l){
 }
 
 void insert_at(List *l, int val, int index){
+    if(index == len(l)){
+        insert(l, val);
+        return;
+    }
     Node *new_node = malloc(sizeof(Node));
     new_node->val = val;
     new_node->next = NULL;
@@ -135,18 +139,7 @@ int main() {
     insert(&list, 3);
     insert(&list, 4);
     print_list(&list);
-    printf("%d\n", len(&list));
-    printf("%d\n", pop(&list));
-    print_list(&list);
-    insert_at(&list, 10, 1);
-    print_list(&list);
-    remove_at(&list, 1);
-    print_list(&list);
-    remove_at(&list, 0);
-    print_list(&list);
-    remove_at(&list, 1);
-    print_list(&list);
-    remove_at(&list, 3);
+    insert_at(&list, 10, 4);
     print_list(&list);
     return 0;
 }
